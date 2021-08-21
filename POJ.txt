@@ -1,0 +1,15 @@
+abstração
+permite isolar de um objeto somente os concenitos
+que são necessarios para o funcionamento do programa
+
+encapuslamento
+vila ocultar partes internas de um objeto e
+exibir apenas o necessario para o uso externo
+
+Herança
+visa passar características de um objeto para outro
+
+polimorfismo
+algo que é polmorfo tem a habilidade de assumir
+diferentes formas
+
