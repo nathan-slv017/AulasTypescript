@@ -1,3 +1,2 @@
-import "./from-control";
-
-console.log("Verificnado se esta funcionando");
+// import "./from-control";
+import "../../A0035-exercicio-video/A0035-exercicio-video";
