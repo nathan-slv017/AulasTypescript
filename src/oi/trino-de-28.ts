@@ -1,39 +1,29 @@
 export class Pessoa {
+    static idadePadrao: number = 0;
+    static cpfPadrao: string = "000.000.000-00";
+
     constructor(
         public nome: string,
         public sobrenome: string,
-        private idade: number,
-        protected cpf: string
+        public idade: number,
+        public cpf: string
     ) {}
 
-    getIdade(): number {
-        return this.idade;
+    static criaPessoa(nome: string, sobrenome: string): Pessoa {
+        return new Pessoa(
+            nome,
+            sobrenome,
+            Pessoa.idadePadrao,
+            Pessoa.cpfPadrao
+        );
     }
-    getNomeCompleto(): string {
-        return this.nome + " " + this.sobrenome;
-    }
-    getCod(): string {
-        return this.cpf;
-    }
-}
 
-export class Aluno extends Pessoa {
-    getNomeCompleto(): string {
-        return "Nome do aluno(a) é " + this.nome + " " + this.sobrenome;
+    static metodoNormal(): void {
+        console.log(Pessoa.idadePadrao, Pessoa.cpfPadrao);
     }
 }
 
-export class Empregado extends Pessoa {
-    getNomeCompleto(): string {
-        return "Nome do empregado(a) é " + this.nome + " " + this.sobrenome;
-    }
-}
-
-const pessoa = new Pessoa("Nathan", "Silva", 19, "102910290102");
-console.log(pessoa.getNomeCompleto());
-
-const aluno = new Aluno("Vitoria", "Ana", 17, "1039039292");
-console.log(aluno.getNomeCompleto());
-
-const empregado = new Pessoa("Matheus", "Ribeiro", 22, "39023992839");
-console.log(empregado.getNomeCompleto());
+const pessoa1 = new Pessoa("Luiz", "Miranda", 30, "120.332.331-99");
+const pessoa2 = Pessoa.criaPessoa("Marcos", "Silva");
+console.log(pessoa1);
+console.log(pessoa2);
