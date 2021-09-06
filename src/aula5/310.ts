@@ -33,6 +33,35 @@ type PessoaPick = Pick<PessoaRequired, "nome" | "sobrenome">;
 type ABC = "A" | "B" | "C";
 type CDE = "C" | "D" | "E";
 
+//
+
+type AccountMongo = {
+    _id: string;
+    nome: string;
+    idade: number;
+};
+
+type AccountApi = {
+    id: string;
+    nome: string;
+    idade: number;
+};
+
+type AccountApi2 = Pick<AccountMongo, Exclude<keyof AccountMongo, "_id">> & {
+    id: string;
+};
+
+const accountMongo: AccountMongo = {
+    _id: "032903920392032",
+    nome: "Nathan",
+    idade: 19,
+};
+
+function mapAccount(accountMongo: AccountMongo): AccountApi {
+    const { _id, ...accountData } = accountMongo;
+    return { ...accountData, id: _id };
+}
+
 type TipoExclude = Exclude<ABC, CDE>;
 type TipoExtract = Extract<ABC, CDE>;
 
