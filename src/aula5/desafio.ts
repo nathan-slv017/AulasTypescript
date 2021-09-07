@@ -12,11 +12,10 @@ export class Votation {
     }
 
     vote(votationIndex: number): void {
-        if (!this._votationOptions[votationIndex]) return;
         this._votationOptions[votationIndex].numberOfvotes += 1;
     }
 
-    get votationOption(): VotationOption[] {
+    get votationOptions(): VotationOption[] {
         return this._votationOptions;
     }
 }
@@ -28,13 +27,15 @@ export class VotationApp {
         this.votations.push(votation);
     }
 
-    showVotations(): void {
+    showResolts(): void {
         for (const votation of this.votations) {
             console.log(votation.details);
-            for (const votationOption of votation.votationOption) {
+            for (const votationOptions of votation.votationOptions) {
                 console.log(
-                    votationOption.option,
-                    votationOption.numberOfvotes
+                    votationOptions.option +
+                        " recebel " +
+                        votationOptions.numberOfvotes +
+                        " votos"
                 );
             }
             console.log("###");
@@ -43,16 +44,31 @@ export class VotationApp {
     }
 }
 
-const votation1 = new Votation("Qual sua linguagem de programação favorita?");
-votation1.addVotationOption({ option: "Python", numberOfvotes: 0 });
-votation1.addVotationOption({ option: "Java", numberOfvotes: 0 });
-votation1.addVotationOption({ option: "Go", numberOfvotes: 0 });
-votation1.vote(1);
-votation1.vote(2);
-votation1.vote(2);
-votation1.vote(0);
-votation1.vote(2);
+const votacaoCorPreferida = new Votation("Votação de cores preferidas");
+votacaoCorPreferida.addVotationOption({ option: "azul", numberOfvotes: 0 });
+votacaoCorPreferida.addVotationOption({ option: "amarelo", numberOfvotes: 0 });
+votacaoCorPreferida.addVotationOption({ option: "pink", numberOfvotes: 0 });
+votacaoCorPreferida.addVotationOption({ option: "marrom", numberOfvotes: 0 });
 
-const votationApp = new VotationApp();
-votationApp.addVotation(votation1);
-votationApp.showVotations();
+votacaoCorPreferida.vote(0);
+
+const votacaoLinguaPreferida = new Votation("Votação de linguas preferida");
+votacaoLinguaPreferida.addVotationOption({
+    option: "ingles",
+    numberOfvotes: 0,
+});
+votacaoLinguaPreferida.addVotationOption({
+    option: "alemao",
+    numberOfvotes: 0,
+});
+votacaoLinguaPreferida.addVotationOption({
+    option: "portugues",
+    numberOfvotes: 0,
+});
+
+votacaoLinguaPreferida.vote(0);
+
+const votacoes = new VotationApp();
+votacoes.addVotation(votacaoCorPreferida);
+votacoes.addVotation(votacaoCorPreferida);
+votacoes.showResolts();
