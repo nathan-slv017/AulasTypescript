@@ -33,3 +33,42 @@ const meuCarrinhoDeCompras = new CarrihnoDeCompras();
 meuCarrinhoDeCompras.inserirVariosProdutos(roupa, blusa, tapete);
 
 meuCarrinhoDeCompras.mostrarProdutos();
+
+/**
+ * type MeuTipo = number;
+ *
+ * function minhaPromise(): Promise<MeuTipo> {
+ * return new Promise((resolve, reject) =>{
+ *      setTimeout(() =>{
+ *      resolve(1)
+ * }, 1000)
+ * })}
+ *
+ * minhaPromise().then((value) => console.log(value + 1))
+ *
+ */
+
+type CallBackfn = (value: unknown, index?: unknown, array?: unknown) => boolean;
+
+export function meuFilter(array: unknown[], callbackfn: CallBackfn): unknown {
+    const newArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (callbackfn(array[i])) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
+
+type GFilterCallback<U> = (value: U, index?: number, array?: U[]) => boolean;
+
+export function gMeuFilter<T>(array: T[], callbackfn: GFilterCallback<T>): T[] {
+    const newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if (callbackfn(array[i])) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
