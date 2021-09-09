@@ -23,13 +23,13 @@ export class Urna {
     }
 }
 
-const votao2018 = new Urna("votação para presidente");
-votao2018.cadastroDeCandidatos({ candidato: "paulin", votos: 0 });
-votao2018.cadastroDeCandidatos({ candidato: "jorge", votos: 0 });
-votao2018.votar(0);
-votao2018.votar(0);
-votao2018.votar(0);
-votao2018.votar(0);
-votao2018.votar(0);
+const votao2021 = new Urna("votação para presidente");
+votao2021.cadastroDeCandidatos({ candidato: "paulin", votos: 0 });
+votao2021.cadastroDeCandidatos({ candidato: "jorge", votos: 0 });
+votao2021.votar(0);
+votao2021.votar(0);
+votao2021.votar(0);
+votao2021.votar(0);
+votao2021.votar(0);
 
-votao2018.apuracaoDaUrna();
+votao2021.apuracaoDaUrna();
